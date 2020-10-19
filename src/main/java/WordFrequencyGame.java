@@ -2,7 +2,6 @@ import java.util.*;
 
 public class WordFrequencyGame {
     private static final String WHITESPACE_REGEX = "\\s+";
-    private static final String SINGLE_SPACE = " ";
     private static final String NEWLINE = "\n";
     private static final String CALCULATE_ERROR_MESSAGE = "Calculate Error";
 
