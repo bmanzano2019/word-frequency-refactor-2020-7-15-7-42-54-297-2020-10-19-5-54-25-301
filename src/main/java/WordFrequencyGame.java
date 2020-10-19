@@ -7,7 +7,7 @@ public class WordFrequencyGame {
 
     public String getResult(String inputStr){
         if (inputStr.split(WHITESPACE_REGEX).length==1) {
-            return String.format("%s %d", inputStr, 1);
+            return String.format("%s %d", inputStr.trim(), 1);
         } else {
             try {
                 List<WordInfo> wordInfoList = listPerWordCount(inputStr);
