@@ -8,7 +8,7 @@ public class WordFrequencyGame {
 
     public String getResult(String inputStr){
         if (inputStr.split(WHITESPACE_REGEX).length==1) {
-            return inputStr + " 1";
+            return String.format("%s %d", inputStr, 1);
         } else {
             try {
                 List<WordInfo> wordInfoList = listPerWordCount(inputStr);
@@ -17,8 +17,7 @@ public class WordFrequencyGame {
 
                 StringJoiner combinedLineOutput = new StringJoiner(NEWLINE);
                 for (WordInfo wordInfo : wordInfoList) {
-                    String outputLine = wordInfo.getValue() + SINGLE_SPACE + wordInfo.getWordCount();
-                    combinedLineOutput.add(outputLine);
+                    combinedLineOutput.add(String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount()));
                 }
                 return combinedLineOutput.toString();
             } catch (Exception calculateError) {
