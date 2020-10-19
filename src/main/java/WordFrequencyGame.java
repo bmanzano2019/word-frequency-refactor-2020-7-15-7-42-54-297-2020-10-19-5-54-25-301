@@ -14,15 +14,13 @@ public class WordFrequencyGame {
         if (inputStr.split(WHITESPACE_REGEX).length==1) {
             return inputStr + " 1";
         } else {
-
             try {
-
                 //split the input string with 1 to n pieces of spaces
                 String[] words = inputStr.split(WHITESPACE_REGEX);
 
                 List<Input> inputList = new ArrayList<>();
-                for (String s : words) {
-                    Input input = new Input(s, 1);
+                for (String word : words) {
+                    Input input = new Input(word, 1);
                     inputList.add(input);
                 }
 
