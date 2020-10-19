@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class WordFrequencyGame {
     private static final String WHITESPACE_REGEX = "\\s+";
@@ -17,15 +13,15 @@ public class WordFrequencyGame {
             try {
                 List<WordInfo> wordInfoList = listPerWordCount(inputStr);
 
-                wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+                wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
 
-                StringJoiner joiner = new StringJoiner(NEWLINE);
-                for (WordInfo w : wordInfoList) {
-                    String s = w.getValue() + SINGLE_SPACE +w.getWordCount();
-                    joiner.add(s);
+                StringJoiner combinedLineOutput = new StringJoiner(NEWLINE);
+                for (WordInfo wordInfo : wordInfoList) {
+                    String outputLine = wordInfo.getValue() + SINGLE_SPACE + wordInfo.getWordCount();
+                    combinedLineOutput.add(outputLine);
                 }
-                return joiner.toString();
-            } catch (Exception e) {
+                return combinedLineOutput.toString();
+            } catch (Exception calculateError) {
                 return CALCULATE_ERROR_MESSAGE;
             }
         }
@@ -33,7 +29,7 @@ public class WordFrequencyGame {
 
     private List<WordInfo> listPerWordCount(String inputStr) {
         //split the input string with 1 to n pieces of spaces
-        String[] words = inputStr.split(WHITESPACE_REGEX);
+        List<String> words = Arrays.asList(inputStr.split(WHITESPACE_REGEX));
 
         List<WordInfo> wordInfoList = new ArrayList<>();
         for (String word : words) {
